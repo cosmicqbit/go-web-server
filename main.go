@@ -6,14 +6,14 @@ import (
 	"net/http"
 )
 
-func employees(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Welcome to Home Page"))
+func anotherPage(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Welcome to Another Page"))
 }
 
 func main() {
 	fileServer := http.FileServer(http.Dir("./static"))
 
-	http.HandleFunc("/employees", employees)
+	http.HandleFunc("/page", anotherPage)
 	http.Handle("/", fileServer)
 
 	fmt.Printf("Starting serving at port 8080")
